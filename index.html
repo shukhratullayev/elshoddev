@@ -1,0 +1,1891 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>Shaxsiy Portfolio | O'zim haqimda</title>
+    <!-- Google Fonts va Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Light mode (default) */
+        :root {
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --bg-alt: #f1f5f9;
+            --text-primary: #0f172a;
+            --text-secondary: #334155;
+            --text-muted: #4b5563;
+            --border-color: #e2e8f0;
+            --card-bg: #ffffff;
+            --navbar-bg: rgba(255, 255, 255, 0.92);
+            --skill-bg: #ffffff;
+            --input-bg: #ffffff;
+            --hero-gradient: linear-gradient(145deg, #ffffff 0%, #f1f5f9 100%);
+            --shadow-sm: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 15px 35px -12px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 25px 40px -12px rgba(0, 0, 0, 0.15);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Dark mode */
+        body.dark {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-alt: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --card-bg: #1e293b;
+            --navbar-bg: rgba(15, 23, 42, 0.92);
+            --skill-bg: #0f172a;
+            --input-bg: #0f172a;
+            --hero-gradient: linear-gradient(145deg, #0f172a 0%, #1e293b 100%);
+            --shadow-sm: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+            --shadow-md: 0 15px 35px -12px rgba(0, 0, 0, 0.25);
+            --shadow-lg: 0 25px 40px -12px rgba(0, 0, 0, 0.3);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.5;
+            scroll-behavior: smooth;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background: var(--navbar-bg);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+            border-bottom: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #2563eb;
+            transition: width 0.4s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        /* Dark mode toggle button */
+        .theme-toggle {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            color: var(--text-primary);
+            font-size: 1.2rem;
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(360deg) scale(1.1);
+            background: #2563eb;
+            color: white;
+            border-color: #2563eb;
+        }
+
+        /* Professional Animations - Smooth & Elegant */
+        @keyframes fadeInUpSmooth {
+            0% {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeftSmooth {
+            0% {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRightSmooth {
+            0% {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes scaleInSmooth {
+            0% {
+                opacity: 0;
+                transform: scale(0.85);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes slideInDownSmooth {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes glowPulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(37, 99, 235, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        /* Animation classes with slower, smoother timing */
+        .animate-fadeUp {
+            animation: fadeInUpSmooth 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+
+        .animate-fadeLeft {
+            animation: fadeInLeftSmooth 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+
+        .animate-fadeRight {
+            animation: fadeInRightSmooth 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+
+        .animate-scale {
+            animation: scaleInSmooth 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+
+        .animate-slide {
+            animation: slideInDownSmooth 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+
+        /* Stagger animations for cards - each card appears with slight delay */
+        .work-card, .project-item, .skill-category {
+            opacity: 0;
+            animation: fadeInUpSmooth 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+
+        .work-card:nth-child(1) { animation-delay: 0.15s; }
+        .work-card:nth-child(2) { animation-delay: 0.3s; }
+        .work-card:nth-child(3) { animation-delay: 0.45s; }
+
+        .project-item:nth-child(1) { animation-delay: 0.1s; }
+        .project-item:nth-child(2) { animation-delay: 0.2s; }
+        .project-item:nth-child(3) { animation-delay: 0.3s; }
+        .project-item:nth-child(4) { animation-delay: 0.4s; }
+
+        .skill-category:nth-child(1) { animation-delay: 0.15s; }
+        .skill-category:nth-child(2) { animation-delay: 0.3s; }
+        .skill-category:nth-child(3) { animation-delay: 0.45s; }
+
+        /* Smooth hover animations */
+        .work-card, .project-item, .skill-category {
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .work-card:hover, .project-item:hover, .skill-category:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow-lg);
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* Button hover animation */
+        .btn {
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-outline:hover {
+            transform: translateY(-3px);
+            background: rgba(37, 99, 235, 0.1);
+        }
+
+        /* Avatar floating animation */
+        .avatar-circle {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            padding: 80px 0 60px;
+            background: var(--hero-gradient);
+            transition: var(--transition);
+        }
+
+        .hero-grid {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .hero-content {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .hero-badge {
+            background: #e0e7ff;
+            color: #2563eb;
+            padding: 6px 14px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1.2rem;
+            animation: glowPulse 2s ease-in-out infinite;
+        }
+
+        body.dark .hero-badge {
+            background: #1e293b;
+            color: #60a5fa;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #2563eb, #7c3aed);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            position: relative;
+            display: inline-block;
+        }
+
+        .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(120deg, #2563eb, #7c3aed);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .hero-content h1:hover .highlight::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .hero-content p {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            color: var(--text-secondary);
+            margin: 1.5rem 0;
+            max-width: 550px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.95rem;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.2);
+        }
+
+        .btn-outline {
+            border: 1.5px solid #2563eb;
+            color: #2563eb;
+            background: transparent;
+        }
+
+        .hero-avatar {
+            flex: 0.6;
+            text-align: center;
+        }
+
+        .avatar-circle {
+            width: clamp(200px, 30vw, 280px);
+            height: clamp(200px, 30vw, 280px);
+            background: linear-gradient(145deg, #2563eb20, #7c3aed30);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.5s ease;
+        }
+
+        .avatar-circle:hover {
+            transform: scale(1.05);
+            box-shadow: 0 30px 50px rgba(37, 99, 235, 0.3);
+        }
+
+        .avatar-circle i {
+            font-size: clamp(5rem, 10vw, 8rem);
+            color: #2563eb;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+            transition: all 0.4s ease;
+        }
+
+        .avatar-circle:hover i {
+            transform: scale(1.1);
+            color: #7c3aed;
+        }
+
+        /* Section umumiy */
+        .section {
+            padding: clamp(50px, 8vw, 80px) 0;
+        }
+
+        .section-alt {
+            background: var(--bg-secondary);
+            transition: var(--transition);
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 5vw, 2.2rem);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 4px;
+            background: #2563eb;
+            margin: 12px auto 0;
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+
+        .section-title:hover:after {
+            width: 100px;
+        }
+
+        /* About card */
+        .about-grid {
+            display: flex;
+            gap: 3rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .about-text {
+            flex: 1.5;
+            transition: all 0.5s ease;
+        }
+
+        .about-text:hover {
+            transform: translateX(5px);
+        }
+
+        .about-text p {
+            margin-bottom: 1.2rem;
+            font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .info-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .info-list li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            flex-wrap: wrap;
+            transition: all 0.3s ease;
+        }
+
+        .info-list li:hover {
+            transform: translateX(8px);
+        }
+
+        .info-list i {
+            width: 28px;
+            color: #2563eb;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .info-list li:hover i {
+            transform: scale(1.2);
+        }
+
+        /* Skills */
+        .skills-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: space-between;
+        }
+
+        .skill-category {
+            flex: 1;
+            min-width: 250px;
+            background: var(--bg-alt);
+            padding: 1.5rem;
+            border-radius: 28px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border: 1px solid var(--border-color);
+        }
+
+        .skill-category h3 {
+            font-size: clamp(1.2rem, 3vw, 1.4rem);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .skill-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 1rem;
+        }
+
+        .skill-tag {
+            background: var(--skill-bg);
+            padding: 8px 18px;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 0.85rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            color: var(--text-secondary);
+        }
+
+        .skill-tag:hover {
+            border-color: #2563eb;
+            color: #2563eb;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.2);
+        }
+
+        /* Ish tajribasi va loyihalar */
+        .work-grid, .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .work-card, .project-item {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 1.8rem;
+            box-shadow: var(--shadow-md);
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border: 1px solid var(--border-color);
+        }
+
+        .work-icon {
+            font-size: 2.5rem;
+            color: #2563eb;
+            margin-bottom: 1rem;
+            transition: all 0.4s ease;
+        }
+
+        .work-card:hover .work-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .work-card h3, .project-item h4 {
+            font-size: clamp(1.2rem, 3vw, 1.4rem);
+            margin-bottom: 0.5rem;
+        }
+
+        .work-date {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .work-card p, .project-item p {
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .project-item i {
+            font-size: 2.2rem;
+            color: #2563eb;
+            margin-bottom: 1rem;
+            transition: all 0.4s ease;
+        }
+
+        .project-item:hover i {
+            transform: scale(1.1) rotate(3deg);
+        }
+
+        /* Contact */
+        .contact-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            justify-content: space-between;
+            background: var(--bg-alt);
+            padding: clamp(1.5rem, 4vw, 2rem);
+            border-radius: 32px;
+            border: 1px solid var(--border-color);
+            transition: all 0.5s ease;
+        }
+
+        .contact-flex:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            flex-wrap: wrap;
+            transition: all 0.3s ease;
+        }
+
+        .contact-detail:hover {
+            transform: translateX(8px);
+        }
+
+        .contact-detail i {
+            width: 40px;
+            height: 40px;
+            background: var(--card-bg);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #2563eb;
+            transition: all 0.4s ease;
+        }
+
+        .contact-detail:hover i {
+            transform: scale(1.1) rotate(360deg);
+            background: #2563eb;
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            background: var(--card-bg);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: #2563eb;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background: #2563eb;
+            color: white;
+            transform: translateY(-5px) rotate(360deg);
+        }
+
+        .contact-form {
+            flex: 1;
+            min-width: 280px;
+            background: var(--card-bg);
+            padding: clamp(1.5rem, 4vw, 1.8rem);
+            border-radius: 28px;
+            border: 1px solid var(--border-color);
+            transition: all 0.5s ease;
+        }
+
+        .contact-form:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px 18px;
+            border-radius: 28px;
+            border: 1px solid var(--border-color);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.4s ease;
+            background: var(--input-bg);
+            color: var(--text-primary);
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+            transform: translateY(-2px);
+        }
+
+        button[type="submit"] {
+            background: #2563eb;
+            border: none;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            width: 100%;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        button[type="submit"]::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        button[type="submit"]:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        button[type="submit"]:hover {
+            background: #1d4ed8;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+        }
+
+        footer {
+            background: var(--bg-secondary);
+            color: var(--text-muted);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            transform: rotate(90deg);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+                padding: 1rem 0;
+                animation: slideInDownSmooth 0.6s ease;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-wrapper {
+                position: relative;
+            }
+
+            .hero-grid {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+
+            .btn-group {
+                justify-content: center;
+            }
+
+            .about-grid {
+                text-align: center;
+            }
+
+            .info-list li {
+                justify-content: center;
+            }
+
+            .skills-wrapper {
+                flex-direction: column;
+            }
+
+            .contact-flex {
+                flex-direction: column;
+            }
+
+            .contact-detail {
+                justify-content: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .work-grid, .project-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.85rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .container {
+                padding: 0 32px;
+            }
+
+            .hero-grid {
+                gap: 2rem;
+            }
+
+            .work-grid, .project-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+
+        @media (min-width: 1025px) and (max-width: 1440px) {
+            .container {
+                max-width: 1100px;
+            }
+        }
+
+        @media (min-width: 1441px) {
+            .container {
+                max-width: 1300px;
+            }
+
+            .hero-content h1 {
+                font-size: 3.5rem;
+            }
+        }
+
+        /* Ish tajriba va Faoliyat uchun qo'shimcha CSS */
+.work-card {
+    background: var(--card-bg);
+    border-radius: 24px;
+    padding: 1.8rem;
+    box-shadow: var(--shadow-md);
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border: 1px solid var(--border-color);
+}
+
+.work-icon {
+    font-size: 2.5rem;
+    color: #2563eb;
+    margin-bottom: 1rem;
+    transition: all 0.4s ease;
+}
+
+.work-card:hover .work-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.work-card h3 {
+    font-size: clamp(1.2rem, 3vw, 1.4rem);
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.work-date {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+
+.work-card p {
+    color: var(--text-secondary);
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Grid tizimi */
+.work-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+/* Loyihalar bo'limi uchun qo'shimcha CSS */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.project-grid.second-row {
+    margin-top: 0;
+}
+
+.project-item {
+    background: var(--card-bg);
+    border-radius: 24px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-md);
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.project-item:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Rasm uchun stil */
+.project-image {
+    width: 100%;
+    height: 200px;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    background: var(--bg-alt);
+    position: relative;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.project-item:hover .project-image img {
+    transform: scale(1.05);
+}
+
+/* Ikonka */
+.project-item i {
+    font-size: 2rem;
+    color: #2563eb;
+    margin: 0.5rem 0;
+    display: inline-block;
+}
+
+.project-item h4 {
+    font-size: 1.3rem;
+    margin: 0.5rem 0;
+    color: var(--text-primary);
+}
+
+.project-item p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0.75rem 0;
+}
+
+/* Texnologiya teglari */
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.project-tech span {
+    background: var(--bg-alt);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #2563eb;
+    border: 1px solid var(--border-color);
+}
+
+/* Video uchun stil */
+.project-video {
+    width: 100%;
+    height: 200px;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    background: #000;
+    position: relative;
+    cursor: pointer;
+}
+
+.project-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.project-item:hover .project-video video {
+    transform: scale(1.02);
+}
+
+/* Video ustidagi overlay (play ikonkasi) */
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-video:hover .video-overlay {
+    opacity: 1;
+}
+
+.video-overlay i {
+    font-size: 3rem;
+    color: white;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    padding: 15px 18px 15px 20px;
+    transition: all 0.3s ease;
+}
+
+.project-video:hover .video-overlay i {
+    transform: scale(1.1);
+    background: #2563eb;
+}
+
+/* Video kontrollerlar */
+.project-video video::-webkit-media-controls {
+    display: none;
+}
+
+.project-video video::-webkit-media-controls-play-button {
+    display: none;
+}
+
+/* Agar video yuklanmasa placeholder */
+.project-video::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #2563eb20, #7c3aed20);
+    z-index: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .project-video {
+        height: 180px;
+    }
+    
+    .video-overlay i {
+        font-size: 2.5rem;
+        padding: 12px 15px 12px 17px;
+    }
+}
+
+/* Linklar */
+.project-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.project-link {
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #2563eb;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.project-link:hover {
+    color: #7c3aed;
+    transform: translateX(3px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .project-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .project-item {
+        padding: 1.2rem;
+    }
+    
+    .project-image {
+        height: 180px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1200px) {
+    .project-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .work-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .work-card {
+        padding: 1.5rem;
+    }
+}
+
+.about-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-image img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    transition: all 0.4s ease;
+}
+
+.about-image img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 30px 60px rgba(37, 99, 235, 0.3);
+}
+
+
+.about-grid {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Rasm pastga tushadi */
+.about-image-bottom {
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.about-image-bottom img {
+    max-width: 300px;
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    transition: 0.4s;
+}
+
+.about-image-bottom img:hover {
+    transform: scale(1.05);
+}
+
+.avatar-circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #00bcd4;
+    box-shadow: 0 0 20px rgba(0, 188, 212, 0.5);
+}
+
+.avatar-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.avatar-circle {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+}
+
+.avatar-circle {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #00bcd4;
+    box-shadow: 0 0 30px rgba(0, 188, 212, 0.7);
+}
+
+.avatar-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.avatar-circle {
+    width: 300px;
+    height: 300px;
+}
+
+@media (max-width: 768px) {
+    .avatar-circle {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+.project-video img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.project-video {
+    position: relative;
+}
+
+.project-video a {
+    display: block;
+    position: relative;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.4);
+    color: white;
+    font-size: 30px;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.project-video:hover .video-overlay {
+    opacity: 1;
+}
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="container nav-wrapper">
+        <div class="logo">ELSHOD<span style="color:#2563eb">.</span>webdev</div>
+        <div class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Bosh sahifa</a></li>
+            <li><a href="#about">Men haqimda</a></li>
+            <li><a href="#skills">Ko'nikmalar</a></li>
+            <li><a href="#work">Tajriba</a></li>
+            <li><a href="#projects">Loyihalar</a></li>
+            <li><a href="#contact">Aloqa</a></li>
+            <li>
+                <div class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section id="home" class="hero">
+    <div class="container hero-grid">
+        <div class="hero-content animate-fadeLeft">
+            <span class="hero-badge"><i class="fas fa-code"></i>  Web Developer</span>
+            <h1>Salom, men <span class="highlight">Elshod Shuhratullayev</span><br>Frontend Darturchiman</h1>
+            <p>Men veb-saytlar va interaktiv ilovalar yaratishga ixtisoslashgan full-stack dasturchiman. Sifatli kod va zamonaviy dizayn men uchun muhim.</p>
+            <div class="btn-group">
+                <a href="#contact" class="btn btn-primary">Bog‘lanish <i class="fas fa-arrow-right"></i></a>
+                <a href="#projects" class="btn btn-outline">Loyihalarim</a>
+            </div>
+        </div>
+        <div class="hero-avatar animate-scale">
+    <div class="avatar-circle">
+        <img src="elshod.png" alt="Elshod Profile">
+    </div>
+</div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="section">
+    <div class="container">
+        <h2 class="section-title animate-fadeUp">O'zim haqimda</h2>
+        <div class="about-grid">
+
+             <div class="about-text animate-fadeLeft">
+        <!-- chap text -->
+    </div>
+
+    <div class="about-text animate-fadeRight">
+        <!-- o‘ng text -->
+    </div>
+
+    <!-- 🔥 RASM PASTDA -->
+    <div class="about-image-bottom">
+        <img src="./Без названия.png" alt="certificate">
+    </div>
+
+        
+            <div class="about-text animate-fadeLeft">
+                <p>Mening ismim Elshod, 16 yoshda. Toshkent shahrida yashayman va IT sohasida 2 yildan ortiq tajribaga egaman. Dasturlashga bo'lgan qiziqim yoshligimdan boshlangan va hozirda bu mening asosiy kasbim va sevimli mashg'ulotim.</p>
+                <p>Men real vaqtda ishlaydigan veb-ilovalar, mobil moslashuvchan saytlar va Frontend tizimlarni loyihalashda kuchliman. Har doim yangi texnologiyalarni o'rganishni va ularni amaliyotda qo'llashni yoqtiraman. Hozirda mustaqil ishlab chiqaruvchi va kichik startaplarda texnik maslahatchi sifatida faoliyat yuritaman.</p>
+                <ul class="info-list">
+                    <li><i class="fas fa-calendar-alt"></i> <strong>Tug'ilgan kun:</strong> 22 Noyabr, 2010</li>
+                    <li><i class="fas fa-map-marker-alt"></i> <strong>Manzil:</strong> Toshkent, O‘zbekiston</li>
+                    <li><i class="fas fa-envelope"></i> <strong>Email:</strong> elshoddevalop@gmail.com</li>
+                    <li><i class="fas fa-briefcase"></i> <strong>Faoliyat:</strong> Frontend Dasturchi</li>
+                </ul>
+            </div>
+            <div class="about-text animate-fadeRight">
+                <p>Shaxsiy fazilatlarim — mas'uliyat, jamoada ishlash va muammolarga kreativ yondashish. Dasturlashda aniq va samarali kod yozishga harakat qilaman. Vaqtimning katta qismini loyihalar ustida ishlash, hamkasblar bilan tajriba almashish va ochiq kodli loyihalarda qatnashish bilan o'tkazaman.</p>
+                <p>Maqsadim — O‘zbekistonda IT ekotizimni rivojlantirishga hissa qo‘shish va global miqyosda taniligan mutaxassis bo‘lish.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills" class="section section-alt">
+    <div class="container">
+        <h2 class="section-title animate-fadeUp">O'zim Ishlab Keladigan Dasturlash Til lari</h2>
+        <div class="skills-wrapper">
+            <div class="skill-category">
+                <h3><i class="fab fa-html5"></i> Frontend</h3>
+                <div class="skill-items">
+                    <span class="skill-tag">HTML/CSS</span>
+                    <span class="skill-tag">JavaScript (ES6+)</span>
+                    <span class="skill-tag">React.js</span>
+                    <span class="skill-tag">Tailwind CSS</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3><i class="fas fa-server"></i> Backend</h3>
+                <div class="skill-items">
+                    <span class="skill-tag">Node.js</span>
+                    
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3><i class="fas fa-database"></i> Ma'lumotlar & Boshqalar</h3>
+                <div class="skill-items">
+                    <span class="skill-tag">Git & GitHub</span>
+                    <span class="skill-tag">Figma</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Ish tajriba / Work Section - Frontend Developer uchun -->
+<section id="work" class="section">
+    <div class="container">
+        <h2 class="section-title animate-fadeUp">Ish tajribasi va Faoliyat</h2>
+        <div class="work-grid">
+            <!-- Card 1: Frontend Developer -->
+            <div class="work-card">
+                <div class="work-icon"><i class="fab fa-react"></i></div>
+                <h3>Frontend Developer</h3>
+                <p>React.js va Next.js asosida interaktiv veb-ilovalar yaratish. Responsive dizayn, komponentlar arxitekturasi va API integratsiyasi. Saytlarni optimallashtirish va SEO ishlari bilan shug'ullanaman. Figma dizaynlarini aniq va tez kodga o'tkazaman.</p>
+            </div>
+            
+            <!-- Card 2: UI/UX va Frontend Mentor -->
+            <div class="work-card">
+                <div class="work-icon"><i class="fas fa-palette"></i></div>
+                <h3>UI/UX & Frontend Mentor</h3>
+                <p>Yosh frontend dasturchilarga HTML, CSS, JavaScript, React.js va Tailwind CSS bo'yicha amaliy treninglar o'tkazdim. </p>
+            </div>
+            
+            <!-- Card 3: Freelance Frontend Developer -->
+            <div class="work-card">
+                <div class="work-icon"><i class="fas fa-laptop-code"></i></div>
+                <h3>Freelance Frontend Developer</h3>
+                <p>Turli sohalar uchun 20+ frontend loyiha: korporativ saytlar, e-commerce, blog platformalari, admin panellar va portfolio saytlari. Mijozlar bilan to'g'ridan-to'g'ri muloqot, Figma'dan kodga o'tkazish, responsive dizayn va cross-browser moslikni ta'minlash.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Loyihalar / Projects - 6 ta card (rasm bilan) -->
+
+<!-- Loyihalar / Projects - 6 ta card (Rasm bilan) -->
+<section id="projects" class="section section-alt">
+    <div class="container">
+        <h2 class="section-title animate-fadeUp">Eng so'nggi loyihalar</h2>
+        
+        <!-- Birinchi qator (3 ta card) -->
+        <div class="project-grid">
+            <!-- Loyiha 1 -->
+            <div class="project-item">
+                <div class="project-video">
+                    <img src="coffee.jpg" alt="Kafe">
+                    <div class="video-overlay">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <i class="fas fa-shopping-cart"></i>
+                <h4>coffee</h4>
+                <p>Zamonaviy coffee uchun interaktiv veb-sayt...</p>
+                <div class="project-tech">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JAVA SCRIPT</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="project-link"><i class="fab fa-github"></i> Kod</a>
+                    <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
+                </div>
+            </div>
+            
+            <!-- Loyiha 2 -->
+            <div class="project-item">
+                <div class="project-video">
+                    <img src="clinika.jpg" alt="MedClinic">
+                    <div class="video-overlay">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <i class="fas fa-clinic-medical"></i>
+                <h4>MedClinic</h4>
+                <p>Zamonaviy tibbiyot markazi uchun to'liq funksional veb-sayt...</p>
+                <div class="project-tech">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JAVA SCRIPT</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="project-link"><i class="fab fa-github"></i> Kod</a>
+                    <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
+                </div>
+            </div>
+            
+            <!-- Loyiha 3 -->
+            <div class="project-item">
+                <div class="project-video">
+                    <img src="evos.png" alt="EVOS">
+                    <div class="video-overlay">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <i class="fas fa-chart-line"></i>
+                <h4>EVOS</h4>
+                <p>Tez ovqatlanish restoranlar tarmog'i uchun zamonaviy veb-sayt...</p>
+                <div class="project-tech">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JAVA SCRIPT</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="project-link"><i class="fab fa-github"></i> Kod</a>
+                    <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Ikkinchi qator -->
+        <div class="project-grid second-row">
+            <!-- Loyiha 4 -->
+            <div class="project-item">
+                <div class="project-video">
+                    <img src="blog.png" alt="BlogSphere">
+                    <div class="video-overlay">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <i class="fas fa-blog"></i>
+                <h4>BlogSphere</h4>
+                <p>Zamonaviy blog platformasi...</p>
+                <div class="project-tech">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JAVA SCRIPT</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="project-link"><i class="fab fa-github"></i> Kod</a>
+                    <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
+                </div>
+            </div>
+            
+            <!-- Loyiha 5 -->
+            <div class="project-item">
+                <div class="project-video">
+                    <img src="car.png" alt="WeatherApp">
+                    <div class="video-overlay">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <i class="fas fa-cloud-sun"></i>
+                <h4>SuperCar </h4>
+                <p>Nashina zavod ko'rsatuvchi ilova...</p>
+                <div class="project-tech">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JAVA SCRIPT</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="project-link"><i class="fab fa-github"></i> Kod</a>
+                    <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
+                </div>
+            </div>
+            
+            <!-- Loyiha 6 -->
+            <div class="project-item">
+                <div class="project-video">
+                    <img src="shop.png" alt="TaskFlow">
+                    <div class="video-overlay">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <i class="fas fa-tasks"></i>
+                <h4>Shop</h4>
+                <p>Online Dokon uchun project...</p>
+                <div class="project-tech">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JAVA SCRIPT</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="project-link"><i class="fab fa-github"></i> Kod</a>
+                    <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Contact Section -->
+<section id="contact" class="section">
+    <div class="container">
+        <h2 class="section-title animate-fadeUp">Bog‘lanish</h2>
+        <div class="contact-flex">
+            <div class="contact-info">
+                <div class="contact-detail">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>+998 33 717 60 00</span>
+                </div>
+                <div class="contact-detail">
+                    <i class="fas fa-envelope"></i>
+                    <span>elshoddevalop@gmail.com</span>
+                </div>
+                <div class="contact-detail">
+                    <i class="fab fa-telegram"></i>
+                    <span>@elshoddevv</span>
+                </div>
+                <div class="contact-detail">
+                    <i class="fab fa-github"></i>
+                    <span>github.com/elshod.dev</span>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="name" placeholder="Ismingiz" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="Email manzil" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="4" id="message" placeholder="Xabaringizni yozing..."></textarea>
+                    </div>
+                    <button type="submit" id="submitBtn">Yuborish <i class="fas fa-paper-plane"></i></button>
+                    <p id="formFeedback" style="margin-top: 12px; font-size: 0.85rem; text-align:center;"></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2026 Elshod Shuhratullayev — Barcha huquqlar himoyalangan. | Dasturchi shaxsiy portfoli</p>
+    </div>
+</footer>
+
+<script>
+    // Dark/Light Mode Toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const body = document.body;
+    
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        body.classList.add('dark');
+        themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+    } else {
+        themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+    }
+    
+    themeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark');
+        if (body.classList.contains('dark')) {
+            localStorage.setItem('theme', 'dark');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        } else {
+            localStorage.setItem('theme', 'light');
+            themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+        }
+    });
+    
+    // Mobile Menu Toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+    
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+        });
+    });
+    
+    // Contact form
+    const form = document.getElementById('contactForm');
+    const feedback = document.getElementById('formFeedback');
+    
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const message = document.getElementById('message').value.trim();
+    
+        if (!name || !email || !message) {
+            feedback.style.color = '#dc2626';
+            feedback.innerHTML = "Iltimos, barcha maydonlarni to'ldiring!";
+            return;
+        }
+        if (!email.includes('@') || !email.includes('.')) {
+            feedback.style.color = '#dc2626';
+            feedback.innerHTML = "Email manzilni to'g'ri kiriting (masalan: name@example.com)";
+            return;
+        }
+    
+        feedback.style.color = '#16a34a';
+        feedback.innerHTML = `Rahmat ${name}! Xabaringiz qabul qilindi. Tez orada javob beraman.`;
+        form.reset();
+    
+        setTimeout(() => {
+            feedback.innerHTML = '';
+        }, 4000);
+    });
+    
+    // Smooth scroll with offset for fixed navbar
+    document.querySelectorAll('.nav-links a, .btn-group a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === "#" || targetId === "") return;
+            const targetElem = document.querySelector(targetId);
+            if (targetElem) {
+                e.preventDefault();
+                const offset = 80;
+                const elementPosition = targetElem.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - offset;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: "smooth"
+                });
+            }
+        });
+    });
+
+    // Video hover bo'lganda to'xtatish/ishlatish
+document.querySelectorAll('.project-video').forEach(videoContainer => {
+    const video = videoContainer.querySelector('video');
+    
+    if (video) {
+        // Hoverda videoni to'xtatish va play ikonkasini ko'rsatish
+        videoContainer.addEventListener('mouseenter', () => {
+            video.pause();
+        });
+        
+        videoContainer.addEventListener('mouseleave', () => {
+            video.play();
+        });
+        
+        // Videoni bosganda to'liq ekranda ochish
+        videoContainer.addEventListener('click', () => {
+            if (video.requestFullscreen) {
+                video.requestFullscreen();
+            } else if (video.webkitRequestFullscreen) {
+                video.webkitRequestFullscreen();
+            }
+            video.play();
+        });
+    }
+});
+
+document.querySelectorAll('.image-popup').forEach(img => {
+    img.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        let overlay = document.createElement('div');
+        overlay.style.position = 'fixed';
+        overlay.style.top = 0;
+        overlay.style.left = 0;
+        overlay.style.width = '100%';
+        overlay.style.height = '100%';
+        overlay.style.background = 'rgba(0,0,0,0.8)';
+        overlay.style.display = 'flex';
+        overlay.style.alignItems = 'center';
+        overlay.style.justifyContent = 'center';
+        overlay.style.zIndex = 9999;
+
+        let image = document.createElement('img');
+        image.src = this.href;
+        image.style.maxWidth = '90%';
+        image.style.maxHeight = '90%';
+        image.style.borderRadius = '10px';
+
+        overlay.appendChild(image);
+
+        overlay.addEventListener('click', () => {
+            overlay.remove();
+        });
+
+        document.body.appendChild(overlay);
+    });
+});
+</script>
+</body>
+</html>
